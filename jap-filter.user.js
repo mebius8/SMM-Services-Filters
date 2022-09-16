@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         jap- service数据筛选
+// @name         jap-service数据筛选
 // @namespace    http://tampermonkey.net/
 // @version      0.3
 // @description  try to take over the world!
@@ -15,16 +15,16 @@
 
     function func() {
 
-        //全局价格修改
+        //jap全局价格修改
         const rate_mix = 0;
-        const rate_max = 5;
+        const rate_max = 2;
 
 
         const csv_data = []
         //表格表头
         let csv_row = 'id,category,rate,mix,max,time(minutes),title\n'
 
-        //tik follow 方法
+        //方法
         $(".service").each(function (index, element) {
             let item = item_post(element)
             if (rate_mix <= parseFloat(item.rate.substr(1)) && parseFloat(item.rate.substr(1)) <= rate_max && (item.time.includes('hour') == false)) {
@@ -73,13 +73,6 @@
         let category = element.getAttribute('data-category')
         let item = {id: id, category: category, rate: rate, mix: mix, max: max, time: time, title: title}
         return item
-    }
-
-    function create_element() {
-        let ele = document.createElement('button')
-        let t = document.createTextNode("下载csv表格")
-        ele.appendChild(t)
-        ele.onclick = 'link.click()'
     }
 
     setTimeout(func, 4000);
