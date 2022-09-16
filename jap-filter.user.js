@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         jap- service数据筛选
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.3
 // @description  try to take over the world!
 // @author       小付
 // @match        https://justanotherpanel.com/services
