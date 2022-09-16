@@ -15,20 +15,19 @@
 
     function func() {
 
-        //tiktok 的价格价格
-
-        const tik_follow_mix = 0;
-        const tik_follow_max = 5;
+        //全局价格修改
+        const rate_mix = 0;
+        const rate_max = 5;
 
 
         const csv_data = []
+        //表格表头
         let csv_row = 'id,category,rate,mix,max,time(minutes),title\n'
-
 
         //tik follow 方法
         $(".service").each(function (index, element) {
             let item = item_post(element)
-            if (tik_follow_mix <= parseFloat(item.rate.substr(1)) && parseFloat(item.rate.substr(1)) <= tik_follow_max && (item.time.includes('hour') == false)) {
+            if (rate_mix <= parseFloat(item.rate.substr(1)) && parseFloat(item.rate.substr(1)) <= rate_max && (item.time.includes('hour') == false)) {
                 item.time = parseInt(item.time)
                 if(item.category.includes('Instagram') || item.category.includes('Tiktok')){
                     console.log(JSON.stringify(item))
