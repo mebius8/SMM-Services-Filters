@@ -17,7 +17,7 @@
 
         //Bulkfollows全局价格修改
         const rate_mix = 0;
-        const rate_max = 2;
+        const rate_max = 5;
 
 
         const csv_data = []
@@ -29,15 +29,13 @@
         $(".cat").each(function (index, element) {
             const categoryid = element.getAttribute('data-filter-table-category-id')
             const category = element.children[0].children[0].textContent
-            // if(category.includes('Instagram') || category.includes('TikTok')){
-            //     category_list.set(categoryid,category)
-            //     // console.log(category_list)
-            // }
-            category_list.set(categoryid,category)
-
+            if(category.includes('Instagram') || category.includes('TikTok')){
+                category_list.set(categoryid,category)
+                // console.log(category_list)
+            }
         })
 
-        $("tbody tr").each(function (index, element){
+        $(".table tbody tr").each(function (index, element){
             let item = item_post(element,category_list)
             if (item.category != undefined && rate_mix <= parseFloat(item.rate.substr(1)) && parseFloat(item.rate.substr(1)) <= rate_max && (item.time.includes('hour') == false)) {
                 item.time = parseInt(item.time)
