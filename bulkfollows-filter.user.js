@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bulkfollows-service数据筛选
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @author       小付
 // @match        https://bulkfollows.com/services
@@ -29,7 +29,7 @@
         $(".cat").each(function (index, element) {
             const categoryid = element.getAttribute('data-filter-table-category-id')
             const category = element.children[0].children[0].textContent
-            if(category.includes('Instagram') || category.includes('TikTok')){
+            if(category.includes('Instagram') || category.includes('TikTok') || category.includes('YouTube') ){
                 category_list.set(categoryid,category)
                 // console.log(category_list)
             }

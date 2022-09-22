@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         jap-service数据筛选
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @author       小付
 // @match        https://justanotherpanel.com/services
@@ -17,7 +17,7 @@
 
         //jap全局价格修改
         const rate_mix = 0;
-        const rate_max = 2;
+        const rate_max = 5;
 
 
         const csv_data = []
@@ -29,7 +29,7 @@
             let item = item_post(element)
             if (rate_mix <= parseFloat(item.rate.substr(1)) && parseFloat(item.rate.substr(1)) <= rate_max && (item.time.includes('hour') == false)) {
                 item.time = parseInt(item.time)
-                if(item.category.includes('Instagram') || item.category.includes('Tiktok')){
+                if(item.category.includes('Instagram') || item.category.includes('Tiktok') || item.category.includes('YouTube')){
                     console.log(JSON.stringify(item))
                     csv_data.push(item)
                 }
@@ -52,7 +52,7 @@
         link.href = uri;
         // 对下载的文件命名
         let now_time = new Date()
-        link.download = `jsp数据表${now_time.getFullYear()}-${now_time.getMonth() + 1}-${now_time.getDate()}-${now_time.getHours()}:${now_time.getMinutes()}:${now_time.getSeconds()}.csv`;
+        link.download = `jap数据表${now_time.getFullYear()}-${now_time.getMonth() + 1}-${now_time.getDate()}-${now_time.getHours()}:${now_time.getMinutes()}:${now_time.getSeconds()}.csv`;
         let btn = document.createElement("BUTTON");
         const t = document.createTextNode("点击下载CSV表格");
         btn.appendChild(t);
