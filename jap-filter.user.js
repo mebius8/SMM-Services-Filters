@@ -29,7 +29,7 @@
             let item = item_post(element)
             if (rate_mix <= parseFloat(item.rate.substr(1)) && parseFloat(item.rate.substr(1)) <= rate_max && (item.time.includes('hour') == false)) {
                 item.time = parseInt(item.time)
-                if(item.category.includes('Instagram') || item.category.includes('Tiktok') || item.category.includes('YouTube')){
+                if(item.category.includes('Instagram') || item.category.includes('Tiktok') || item.category.includes('Youtube')){
                     console.log(JSON.stringify(item))
                     csv_data.push(item)
                 }
